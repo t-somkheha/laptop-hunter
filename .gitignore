@@ -1,0 +1,20 @@
+# browser profiles and session material — must never be committed
+.ffprofile/
+.ffprofile2/
+.ffprofile3/
+.ffprofile*/
+.ff*
+.ff.pid
+.probe/
+
+# listing data: other people's advertisements, photographs and locations
+data/
+data_archive_*/
+data_archive_*/*
+
+# scratch and logs
+*.log
+__pycache__/
+*.pyc
+_sample.py
+.pytest_cache/
