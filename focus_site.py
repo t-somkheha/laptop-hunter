@@ -161,6 +161,10 @@ def main():
     regions = sorted({c.get("region") for c in cards if c.get("region")} - {"watchlist"})
     payload = {"rows": rows, "scanned": len(cards), "regions": regions or ["bangkok"],
                "generated": datetime.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M %Z")}
+    os.makedirs(os.path.dirname(OUT_HTML), exist_ok=True)
+    if not rows:
+        print("no listings yet — run a sweep first (see README: sweep_focus.py, then harvest.py)")
+        return
     with open(OUT_HTML, "w") as f:
         f.write(HTML.replace("__DATA__", json.dumps(payload, ensure_ascii=False)))
     with open(OUT_TXT, "w") as f:
